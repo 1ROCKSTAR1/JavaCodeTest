@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f307f2b5-5bfe-49dd-b842-9f579377babe" name="Changes" comment="theFirstImprovedApiCommit">
+      <change afterPath="$PROJECT_DIR$/src/test/java/api/CreateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/api/ExecTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/api/ExecTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/api/ExecTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/api/UserData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/Random.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/CheckUserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/TestUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rest/TestBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rest/TestClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/UserRegTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ui" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;1ROCKSTAR1&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/1ROCKSTAR1/JavaCodeTest.git&quot;,
+    &quot;accountId&quot;: &quot;126132d0-8641-4ae7-8808-5ee9c419421e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2qqPyKHS7ih1Vvmm4JlRhKCnd0R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.JavaCodeTest [clean].executor": "Run",
+    "Maven.JavaCodeTest [install].executor": "Run",
+    "Maven.JavaCodeTest [test].executor": "Run",
+    "Maven.JavaCodeTest [verify].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TestNG.ExecTest.createUserNegativeTest.executor": "Run",
+    "TestNG.ExecTest.createUserTest.executor": "Run",
+    "TestNG.ExecTest2.getListOfUsersAndCheckEmails.executor": "Run",
+    "TestNG.ExecTest3.deleteUser.executor": "Run",
+    "TestNG.Test.buyThePhoneTest.executor": "Run",
+    "TestNG.Tests.buyThePhone.executor": "Run",
+    "TestNG.Tests.buyThePhoneTest.executor": "Run",
+    "TestNG.UserRegTest.createUserTest.executor": "Run",
+    "TestNG.UserRegTest.testCreateUser.executor": "Run",
+    "git-widget-placeholder": "api",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "J:/Jprojects/JavaCodeTest",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RunManager" selected="TestNG.ExecTest.createUserNegativeTest">
+    <configuration name="ExecTest2.getListOfUsersAndCheckEmails" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JavaCodeTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.ExecTest2" />
+      <option name="METHOD_NAME" value="getListOfUsersAndCheckEmails" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExecTest3.deleteUser" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JavaCodeTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.ExecTest3" />
+      <option name="METHOD_NAME" value="deleteUser" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExecTest.createUserNegativeTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JavaCodeTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.ExecTest" />
+      <option name="METHOD_NAME" value="createUserNegativeTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExecTest.createUserTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JavaCodeTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.ExecTest" />
+      <option name="METHOD_NAME" value="createUserTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRegTest.createUserTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JavaCodeTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="test.UserRegTest" />
+      <option name="METHOD_NAME" value="createUserTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.ExecTest.createUserNegativeTest" />
+        <item itemvalue="TestNG.ExecTest.createUserTest" />
+        <item itemvalue="TestNG.ExecTest3.deleteUser" />
+        <item itemvalue="TestNG.ExecTest2.getListOfUsersAndCheckEmails" />
+        <item itemvalue="TestNG.UserRegTest.createUserTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f307f2b5-5bfe-49dd-b842-9f579377babe" name="Changes" comment="" />
+      <created>1735387385753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735387385753</updated>
+    </task>
+    <task id="LOCAL-00001" summary="theFirstImprovedApiCommit">
+      <option name="closed" value="true" />
+      <created>1735407766900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1735407766900</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="ui" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="theFirstImprovedApiCommit" />
+    <option name="LAST_COMMIT_MESSAGE" value="theFirstImprovedApiCommit" />
+  </component>
+</project>

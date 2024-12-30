@@ -1,0 +1,451 @@
+Index: src/test/java/page/MainPage.java
+===================================================================
+diff --git a/src/test/java/page/MainPage.java b/src/test/java/page/MainPage.java
+new file mode 100644
+--- /dev/null	(date 1735477183751)
++++ b/src/test/java/page/MainPage.java	(date 1735477183751)
+@@ -0,0 +1,24 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++
++public class MainPage extends BasePage {
++
++    @FindBy(xpath = "//a[@id='login2']")
++    private WebElement logInButton;
++
++    public MainPage(WebDriver driver) {
++        super(driver);
++    }
++
++    public AutorizePage clickOnLogin() {
++        getWait2().until(ExpectedConditions.visibilityOf(logInButton)).click();
++        return new AutorizePage(getDriver());
++    }
++
++
++}
+Index: src/test/java/page/AfterAutorizePage.java
+===================================================================
+diff --git a/src/test/java/page/AfterAutorizePage.java b/src/test/java/page/AfterAutorizePage.java
+new file mode 100644
+--- /dev/null	(date 1735477183771)
++++ b/src/test/java/page/AfterAutorizePage.java	(date 1735477183771)
+@@ -0,0 +1,22 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++
++public class AfterAutorizePage extends BasePage {
++
++    @FindBy(xpath = "//a[contains(text(),'Nexus 6')]")
++    private WebElement nexusItem;
++
++    public AfterAutorizePage(WebDriver driver) {
++        super(driver);
++    }
++
++    public NexusPage clickOnNexus() {
++        getWait5().until(ExpectedConditions.elementToBeClickable(nexusItem)).click();
++        return new NexusPage(getDriver());
++    }
++}
+Index: src/test/java/test/Tests.java
+===================================================================
+diff --git a/src/test/java/test/Tests.java b/src/test/java/test/Tests.java
+new file mode 100644
+--- /dev/null	(date 1735477183775)
++++ b/src/test/java/test/Tests.java	(date 1735477183775)
+@@ -0,0 +1,35 @@
++package test;
++
++import base.BaseTest;
++import org.testng.Assert;
++import org.testng.annotations.Test;
++import page.MainPage;
++
++public class Tests extends BaseTest {
++
++    @Test
++    public void buyThePhoneTest() {
++
++        String realPriceInOrder = new MainPage(getDriver())
++                .clickOnLogin()
++                .fillLogin()
++                .fillPassword()
++                .clickOnLoginSubmit()
++                .clickOnNexus()
++                .clickOnAddToCart()
++                .acceptAlert()
++                .goToCart()
++                .checkPriceHeader()
++                .clickOnPlaceOrder()
++                .fillCustomerCardNumberField()
++                .fillCustomerCountryField()
++                .fillCustomerCityField()
++                .fillCustomerCardNumberField()
++                .fillCustomerMonthField()
++                .fillCustomerYearField()
++                .clickOnPurchaseButton()
++                .getFinalPrice();
++
++        Assert.assertEquals(realPriceInOrder,"$650");
++    }
++}
+Index: src/test/java/base/BasePage.java
+===================================================================
+diff --git a/src/test/java/base/BasePage.java b/src/test/java/base/BasePage.java
+new file mode 100644
+--- /dev/null	(date 1735477183755)
++++ b/src/test/java/base/BasePage.java	(date 1735477183755)
+@@ -0,0 +1,46 @@
++package base;
++
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.support.PageFactory;
++import org.openqa.selenium.support.ui.WebDriverWait;
++
++import java.time.Duration;
++
++public class BasePage {
++
++    private final WebDriver driver;
++
++    public BasePage(WebDriver driver) {
++        this.driver = driver;
++
++        PageFactory.initElements(driver, this); // NECESSARY THING FOR USING @FINDBY
++    }
++    protected WebDriver getDriver() {
++        return driver;
++    }
++
++    private WebDriverWait wait2;
++    private WebDriverWait wait5;
++    private WebDriverWait wait10;
++
++    protected WebDriverWait getWait5() {
++        if (wait5 == null) {
++            wait5 = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
++        }
++        return wait5;
++    }
++
++    protected WebDriverWait getWait2() {
++        if (wait2 == null) {
++            wait2 = new WebDriverWait(getDriver(), Duration.ofSeconds(2));
++        }
++        return wait2;
++    }
++
++    protected WebDriverWait getWait10() {
++        if (wait10 == null) {
++            wait10 = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
++        }
++        return wait10;
++    }
++}
+Index: src/test/java/page/CartPage.java
+===================================================================
+diff --git a/src/test/java/page/CartPage.java b/src/test/java/page/CartPage.java
+new file mode 100644
+--- /dev/null	(date 1735477183760)
++++ b/src/test/java/page/CartPage.java	(date 1735477183760)
+@@ -0,0 +1,35 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.testng.Assert;
++
++
++public class CartPage extends BasePage {
++
++    @FindBy(xpath = "//*[@id='tbodyid']/tr/td[3]")
++    private WebElement priceField;
++
++    @FindBy(xpath = "//a[@onclick='addToCart(6)']")
++    private WebElement placeOrderButton;
++
++    public CartPage(WebDriver driver) {
++        super(driver);
++    }
++
++    public CartPage checkPriceHeader() {
++        String actualPrice = getWait2().until(ExpectedConditions.visibilityOf(priceField)).getText();
++        Assert.assertEquals(actualPrice,"$650");
++        return this;
++    }
++
++    public OrderPage clickOnPlaceOrder() {
++        getWait2().until(ExpectedConditions.visibilityOf(placeOrderButton)).click();
++        return new OrderPage(getDriver());
++    }
++
++
++}
+\ No newline at end of file
+Index: src/test/java/base/BaseTest.java
+===================================================================
+diff --git a/src/test/java/base/BaseTest.java b/src/test/java/base/BaseTest.java
+new file mode 100644
+--- /dev/null	(date 1735477183789)
++++ b/src/test/java/base/BaseTest.java	(date 1735477183789)
+@@ -0,0 +1,47 @@
++package base;
++
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.openqa.selenium.chrome.ChromeOptions;
++import org.openqa.selenium.support.ui.WebDriverWait;
++import org.testng.annotations.AfterMethod;
++import org.testng.annotations.BeforeMethod;
++
++import java.time.Duration;
++
++public class BaseTest {
++
++    private WebDriverWait wait2;
++    private WebDriverWait wait5;
++    private WebDriver driver;
++    private static final String BASE_URL = "https://www.demoblaze.com";
++
++    @BeforeMethod(description = "Browser startUp")
++    protected void beforeMethod() {
++        ChromeOptions chromeOptions = new ChromeOptions();
++        chromeOptions.addArguments("--remote-allow-origins=*", /*"--headless",*/ "--window-size=1920,1080");
++        driver = new ChromeDriver(chromeOptions);
++        driver.manage().window().maximize();
++        getDriver().get(BASE_URL);
++    }
++
++    @AfterMethod(description = "Browser tearDown")
++    protected void afterMethod() {
++        driver.quit();
++    }
++    protected WebDriver getDriver() {
++        return driver;
++    }
++    protected WebDriverWait getWait2() {
++        if (wait2 == null) {
++            wait2 = new WebDriverWait(getDriver(), Duration.ofSeconds(2));
++        }
++        return wait2;
++    }
++    protected WebDriverWait getWait5() {
++        if (wait5 == null) {
++            wait5 = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
++        }
++        return wait5;
++    }
++}
+Index: src/test/java/page/OrderPage.java
+===================================================================
+diff --git a/src/test/java/page/OrderPage.java b/src/test/java/page/OrderPage.java
+new file mode 100644
+--- /dev/null	(date 1735477183793)
++++ b/src/test/java/page/OrderPage.java	(date 1735477183793)
+@@ -0,0 +1,71 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++
++public class OrderPage extends BasePage {
++
++    @FindBy(xpath = "//input[@id='name']")
++    private WebElement customerNameField;
++
++    @FindBy(xpath = "//input[@id='country']")
++    private WebElement countryNameField;
++
++    @FindBy(xpath = "//input[@id='city']")
++    private WebElement cityNameField;
++
++    @FindBy(xpath = "//input[@id='card']")
++    private WebElement cardNumberField;
++
++    @FindBy(xpath = "//input[@id='month']")
++    private WebElement monthField;
++
++    @FindBy(xpath = "//input[@id='year']")
++    private WebElement yearField;
++
++    @FindBy(xpath = "//button[contains(text(),'Purchase')]")
++    private WebElement purchaseButton;
++
++
++    public OrderPage(WebDriver driver) {
++        super(driver);
++    }
++
++    public OrderPage fillCustomerNameField() {
++        getWait2().until(ExpectedConditions.visibilityOf(customerNameField)).sendKeys("Alex");
++        return this;
++    }
++
++    public OrderPage fillCustomerCountryField() {
++        getWait2().until(ExpectedConditions.visibilityOf(countryNameField)).sendKeys("Indonesia");
++        return this;
++    }
++
++    public OrderPage fillCustomerCityField() {
++        getWait2().until(ExpectedConditions.visibilityOf(cityNameField)).sendKeys("Jakarta");
++        return this;
++    }
++
++    public OrderPage fillCustomerCardNumberField() {
++        getWait2().until(ExpectedConditions.visibilityOf(cardNumberField)).sendKeys("123456");
++        return this;
++    }
++
++    public OrderPage fillCustomerMonthField() {
++        getWait2().until(ExpectedConditions.visibilityOf(monthField)).sendKeys("06");
++        return this;
++    }
++
++    public OrderPage fillCustomerYearField() {
++        getWait2().until(ExpectedConditions.visibilityOf(yearField)).sendKeys("2023");
++        return this;
++    }
++
++    public FinalOrderPage clickOnPurchaseButton() {
++        getWait2().until(ExpectedConditions.visibilityOf(purchaseButton)).click();
++        return new FinalOrderPage(getDriver());
++    }
++}
+Index: src/test/java/page/AutorizePage.java
+===================================================================
+diff --git a/src/test/java/page/AutorizePage.java b/src/test/java/page/AutorizePage.java
+new file mode 100644
+--- /dev/null	(date 1735477183780)
++++ b/src/test/java/page/AutorizePage.java	(date 1735477183780)
+@@ -0,0 +1,38 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++
++public class AutorizePage extends BasePage {
++
++    @FindBy(xpath = "//input[@id='loginusername']")
++    private WebElement loginField;
++
++    @FindBy(xpath = "//input[@id='loginpassword']")
++    private WebElement passField;
++
++    @FindBy(xpath = "//button[@onclick='logIn()']")
++    private WebElement logInSubmitButton;
++
++    public AutorizePage(WebDriver driver) {
++        super(driver);
++    }
++
++    public AutorizePage fillLogin() {
++        getWait2().until(ExpectedConditions.visibilityOf(loginField)).sendKeys("1Alex1");
++        return this;
++    }
++
++    public AutorizePage fillPassword() {
++        getWait2().until(ExpectedConditions.visibilityOf(passField)).sendKeys("p@ssw0rd1");
++        return this;
++    }
++
++    public AfterAutorizePage clickOnLoginSubmit() {
++        getWait2().until(ExpectedConditions.visibilityOf(logInSubmitButton)).click();
++        return new AfterAutorizePage(getDriver());
++    }
++}
+Index: src/test/java/page/NexusPage.java
+===================================================================
+diff --git a/src/test/java/page/NexusPage.java b/src/test/java/page/NexusPage.java
+new file mode 100644
+--- /dev/null	(date 1735477183784)
++++ b/src/test/java/page/NexusPage.java	(date 1735477183784)
+@@ -0,0 +1,37 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.Alert;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++
++public class NexusPage extends BasePage {
++
++    @FindBy(xpath = "//a[@onclick='addToCart(6)']")
++    private WebElement addToCartButton;
++
++    @FindBy(xpath = "//a[contains(text(),'Cart')]")
++    private WebElement goToCartButton;
++
++    public NexusPage(WebDriver driver) {
++        super(driver);
++    }
++
++    public NexusPage clickOnAddToCart() {
++        getWait2().until(ExpectedConditions.visibilityOf(addToCartButton)).click();
++        return this;
++    }
++
++    public NexusPage acceptAlert() {
++        Alert alert = getWait2().until(ExpectedConditions.alertIsPresent());
++        alert.accept();
++        return this;
++    }
++
++    public CartPage goToCart() {
++        getWait2().until(ExpectedConditions.visibilityOf(addToCartButton)).click();
++        return new CartPage(getDriver());
++    }
++}
+\ No newline at end of file
+Index: src/test/java/page/FinalOrderPage.java
+===================================================================
+diff --git a/src/test/java/page/FinalOrderPage.java b/src/test/java/page/FinalOrderPage.java
+new file mode 100644
+--- /dev/null	(date 1735477183798)
++++ b/src/test/java/page/FinalOrderPage.java	(date 1735477183798)
+@@ -0,0 +1,24 @@
++package page;
++
++import base.BasePage;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.testng.Assert;
++
++public class FinalOrderPage extends BasePage {
++
++    @FindBy(xpath = "//p/br[1]")
++    private WebElement finalPriceField;
++
++    public FinalOrderPage(WebDriver driver) {
++        super(driver);
++    }
++
++    public String getFinalPrice() {
++        return getWait2().until(ExpectedConditions.visibilityOf(finalPriceField)).getText();
++
++
++    }
++}

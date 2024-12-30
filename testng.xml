@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="J:/Jprojects/JavaCodeTest">
-        <classes>
-            <class name="test.UserRegTest">
-                <methods>
-                    <include name="testCreateUser"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-</suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="J:/Jprojects/JavaCodeTest"><classes><class name="api.ExecTest"><methods><include name="createUserTest"/><include name="createUserNegativeTest"/></methods></class><class name="api.ExecTest2"><methods><include name="getListOfUsersAndCheckEmails"/></methods></class><class name="api.ExecTest3"><methods><include name="deleteUser"/></methods></class></classes></test></suite>

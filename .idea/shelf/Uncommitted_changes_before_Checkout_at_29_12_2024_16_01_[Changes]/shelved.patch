@@ -1,0 +1,23 @@
+Index: testng.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE suite SYSTEM \"http://testng.org/testng-1.0.dtd\">\r\n<suite name=\"All Test Suite\">\r\n    <test verbose=\"2\" preserve-order=\"true\" name=\"J:/Jprojects/JavaCodeTest\">\r\n        <classes>\r\n            <class name=\"test.UserRegTest\">\r\n                <methods>\r\n                    <include name=\"testCreateUser\"/>\r\n                </methods>\r\n            </class>\r\n        </classes>\r\n    </test>\r\n</suite>
+===================================================================
+diff --git a/testng.xml b/testng.xml
+--- a/testng.xml	(revision d83c1c29f39fa108417cecfe8a266e1e9066663a)
++++ b/testng.xml	(date 1735477183766)
+@@ -2,12 +2,6 @@
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+ <suite name="All Test Suite">
+     <test verbose="2" preserve-order="true" name="J:/Jprojects/JavaCodeTest">
+-        <classes>
+-            <class name="test.UserRegTest">
+-                <methods>
+-                    <include name="testCreateUser"/>
+-                </methods>
+-            </class>
+-        </classes>
++        <classes/>
+     </test>
+ </suite>
+\ No newline at end of file
